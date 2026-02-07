@@ -24,6 +24,7 @@ def query_web_page(
         list[bs4.element.Tag]: Web page data returned from polymarket.
     """
     res = requests.get(polymarket_url + "/" + " ".join(sys.argv[1:]), headers=headers)
+    print(sys.argv[1:])
     res.raise_for_status()
     soup = bs4.BeautifulSoup(res.text, "html.parser")
     web_page_data = soup.select("p")
@@ -44,7 +45,7 @@ def get_price_value(
         Defaults to {"User-Agent": "Mozilla/5.0"}.
         gamma_api_url (str, optional): Polymarket API URL. Defaults to "https://gamma-api.polymarket.com/events".
     """
-    matches = set([p for p in web_page_data if re.search(r"finish", p.get_text(), re.IGNORECASE)])
+    matches = set([p for p in web_page_data if re.search(r"Gold", p.get_text(), re.IGNORECASE)])
 
     for p in matches:
         parent_link = p.parent.parent.parent.parent
@@ -53,7 +54,7 @@ def get_price_value(
             slug = parent_link.split("/")[-1]
         else:
             print("cant find link")
-
+    print("this is ", slug)
     api_res = requests.get(f"{gamma_api_url}?slug={slug}", headers=headers)
 
     data = api_res.json()
