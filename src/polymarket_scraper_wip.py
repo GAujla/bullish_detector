@@ -34,11 +34,11 @@ class PolymarketExtract:
         for information in data_list:
             results.append(
                 {
-                    "title": information.get("title"),
+                    "title": information.get("title"),  # Just to showcase we can get this, not utilised
                     "information": "Closed" if information.get("closed") else "Open",
                     "slug": information.get("slug"),
-                    "volume": information.get("volume"),
-                    "end_date": information.get("endDate"),
+                    "volume": information.get("volume"),  # Just to showcase we can get this, not utilised
+                    "end_date": information.get("endDate"),  # Just to showcase we can get this, not utilised
                 }
             )
         return results
