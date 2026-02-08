@@ -1,6 +1,6 @@
 """Python Module to execute main block of code."""
 
-from polymarket_scraper import PolymarketExtract
+from scraping_data.polymarket_scraper import PolymarketExtract
 
 
 def main() -> None:

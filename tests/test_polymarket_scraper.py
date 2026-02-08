@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 import pytest
 
-from src.polymarket_scraper import PolymarketExtract
+from src.scraping_data.polymarket_scraper import PolymarketExtract
 from tests.fixture_data.polymarket_scraper_fixture_data import finance_market_fixture_data
 
 

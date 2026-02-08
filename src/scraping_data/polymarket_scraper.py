@@ -62,7 +62,8 @@ class PolymarketExtract:
             title = event.get("title")
 
             for market in event.get("markets", []):
-                outcome_label = market.get("groupItemTitle", "Price")
+                outcome_label = market.get("groupItemTitle")
                 market_and_price_output[title].append(outcome_label)
+                market_and_price_output[title].append(market.get("outcomePrices"))
 
         return market_and_price_output
