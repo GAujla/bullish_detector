@@ -24,7 +24,7 @@ line-length = 120
 
 [tool.ruff.lint]
 # 2. Add "I" to the list of rules to enable Import Sorting
-# E = pycodestyle errors, F = Pyflakes (bugs), I = Isort
+# E = pycodestyle errors, F = Pyflakes (bugs), I = Isort, B flake8, D, pydocstyle
 select = ["E", "F", "I", "B", "D"]
 ignore = ["D203", "D213"]
 
