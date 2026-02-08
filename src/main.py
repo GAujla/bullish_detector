@@ -1,12 +1,13 @@
 """Python Module to execute main block of code."""
 
-from polymarket_scraper_wip import PolymarketExtract
+from polymarket_scraper import PolymarketExtract
 
 
 def main() -> None:
     """Run main block of code."""
     pe = PolymarketExtract()
-    pe.get_finance_market_information()
+    a = pe.get_price_value()
+    print(a)
 
 
 if __name__ == "__main__":

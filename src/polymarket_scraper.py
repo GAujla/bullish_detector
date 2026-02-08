@@ -1,5 +1,6 @@
 """Python module to handle extracting information from polymrket."""
 
+from collections import defaultdict
 from typing import List
 
 import requests
@@ -43,22 +44,25 @@ class PolymarketExtract:
             )
         return results
 
-    def get_price_value(self) -> None:
+    def get_price_value(self) -> defaultdict[str, List] | None:
         """Utilises slug value (key indicatior to identify stocks when using event api).
 
         This is done to extract key information relevant to a particular bet for a specific stock.
         """
         betting_ticket_result = self.get_finance_market_information()
+
+        market_and_price_output = defaultdict(list)
+
         for bet in betting_ticket_result:
-            # if bet['information'] == 'Closed':
             slug = bet["slug"]
             response = requests.get(f"{self.gamma_api_base}/events?slug={slug}")
             data = response.json()
 
             event = data[0]
             title = event.get("title")
-            print(f"Market: {title}")
 
             for market in event.get("markets", []):
                 outcome_label = market.get("groupItemTitle", "Price")
-                print(f"  {outcome_label}")
+                market_and_price_output[title].append(outcome_label)
+
+        return market_and_price_output
