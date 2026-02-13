@@ -37,3 +37,27 @@ finance_market_fixture_data = [
     ),
     ({"events": []}, []),
 ]
+
+
+financial_values = [
+    (
+        [
+            {
+                "title": "Apple (AAPL) closes week of Feb 9 at ___?",
+                "markets": [
+                    {"groupItemTitle": "<$255", "outcomePrices": ["0.1845", "0.8155"]},
+                    {"groupItemTitle": "$255-$260", "outcomePrices": ["0.4385", "0.5615"]},
+                ],
+            }
+        ],
+        {
+            "Apple (AAPL) closes week of Feb 9 at ___?": [
+                "<$255",
+                ["0.1845", "0.8155"],
+                "$255-$260",
+                ["0.4385", "0.5615"],
+            ]
+        },
+    ),
+    ([], {}),
+]

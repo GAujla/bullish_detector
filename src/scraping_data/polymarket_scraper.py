@@ -44,7 +44,7 @@ class PolymarketExtract:
             )
         return results
 
-    def get_price_value(self) -> defaultdict[str, List] | None:
+    def get_financial_values(self) -> defaultdict[str, List] | None:
         """Utilises slug value (key indicatior to identify stocks when using event api).
 
         This is done to extract key information relevant to a particular bet for a specific stock.
@@ -57,7 +57,8 @@ class PolymarketExtract:
             slug = bet["slug"]
             response = requests.get(f"{self.gamma_api_base}/events?slug={slug}")
             data = response.json()
-
+            if not data:
+                continue
             event = data[0]
             title = event.get("title")
 
