@@ -210,3 +210,4 @@ __marimo__/
 # File types
 *.json
 *.csv
+*.pyc
